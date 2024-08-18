@@ -9,7 +9,8 @@ export async function createUser(
 ) {
   try {
     const user = await UserModel.create(input);
-    return omit(user.toJSON(), "password");
+    return user
+    // return omit(user.toJSON(), "password");
   } catch (e: any) {
     throw new Error(e);
   }
@@ -29,5 +30,7 @@ export async function validatePassword({
   if (!isValid) {
     return false;
   }
-  return omit(user.toJSON(), "password");
+  return user
+  // return omit(user.toJSON(), "password");
 }
+ 
