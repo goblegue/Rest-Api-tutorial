@@ -3,7 +3,7 @@ import { createUserHandler } from "./controller/user.controller";
 import  validateResource  from "./middleware/validateResource";
 import { createUserSchema } from "./schema/user.schema";
 import { createSessionSchema } from "./schema/session.schema";
-import { createUserSessionHandler,getUserSessionHandler } from "./controller/session.controller";
+import { createUserSessionHandler,getUserSessionHandler,deleteUserSessionHandler } from "./controller/session.controller";
 import requireUser from "./middleware/requireUser";
 
 function routes(app: Express) {
@@ -15,6 +15,7 @@ function routes(app: Express) {
     app.post("/api/sessions", validateResource(createSessionSchema),createUserSessionHandler);
 
     app.get("/api/sessions",requireUser,getUserSessionHandler)
+    app.delete("/api/sessions",requireUser,deleteUserSessionHandler)
 
 
 }
