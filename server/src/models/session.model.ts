@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 import { UserDocument } from "./user.model";
 

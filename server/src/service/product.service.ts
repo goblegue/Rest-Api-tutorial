@@ -9,19 +9,14 @@ import ProductModel, { ProductDocument } from "../models/product.model";
 export async function createProduct(
   input: DocumentDefinition<Omit<ProductDocument, "createdAt" | "updatedAt">>
 ) {
-  try {
-    const product = await ProductModel.create(input);
-    return product;
-  } catch (e: any) {
-    throw new Error(e);
-  }
+  return ProductModel.create(input);
 }
 
-export async function findProducts(
+export async function findProduct(
   query: FilterQuery<ProductDocument>,
-  option: QueryOptions = { lean: true }
+  options: QueryOptions = { lean: true }
 ) {
-  return ProductModel.findOne(query, {}, option);
+  return ProductModel.findOne(query, {}, options);
 }
 
 export async function findAndUpdateProduct(
